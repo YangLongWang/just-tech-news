@@ -1,5 +1,4 @@
 const { Model, DataTypes } = require('sequelize');
-const sequilize = require('../config/connection');
 const sequelize = require('../config/connection');
 
 class Post extends Model {
@@ -18,7 +17,7 @@ class Post extends Model {
           'title',
           'created_at',
           [
-            sequilize.literal('(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)'),
+            sequelize.literal('(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)'),
             'vote_count'
           ]
         ]
